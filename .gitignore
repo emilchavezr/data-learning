@@ -1,1 +1,12 @@
 practices_and_testings.ipynb
+
+# Entornos virtuales (No subir a GitHub)
+.venv/
+venv/
+env/
+
+# Archivos cacheados y compilados de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
