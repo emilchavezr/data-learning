@@ -68,17 +68,18 @@ if not st.session_state.game_over:
 
 # 7. Comprobar si ganó o perdió
 # Perder
-if st.session_state.lives == 0 and not st.session_state.game_over:
+if st.session_state.lives == 0:
     st.session_state.game_over = True
-    st.error(f"¡PERDISTE! La palabra era: {st.session_state.chosen_word}")
-    st.rerun()
+    st.error("¡Te has quedado sin vidas! 💀")
+    st.markdown(f"### La palabra era: **{st.session_state.chosen_word.upper()}**")
 
 # Ganar
-if "_" not in display.replace(" ", "") and not st.session_state.game_over:
+elif "_" not in display.replace(" ", ""):
+    if not st.session_state.game_over: # Para que los globos salgan solo una vez
+        st.balloons()
     st.session_state.game_over = True
     st.success("¡GANASTE! 🎉")
-    st.balloons() # ¡Un pequeño efecto visual de Streamlit!
-    st.rerun()
+    st.markdown(f"### ¡Adivinaste la palabra: **{st.session_state.chosen_word.upper()}**!")
 
 # 8. Botón para jugar de nuevo al terminar
 if st.session_state.game_over:
